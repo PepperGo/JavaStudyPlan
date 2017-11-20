@@ -25,12 +25,15 @@ Serializable is a marker interface (has no data member and method). It is used t
 
 ### Understand the serialVersionUID
 
-The serialVersionUID is used as a version control in a Serializable class. If you do not explicitly declare a serialVersionUID, JVM will do it for you automatically, based on various aspects of your Serializable class, as described in the Java(TM) Object Serialization Specification.  
+The serialVersionUID is used as a version control in a Serializable class. If you do not explicitly declare a serialVersionUID, JVM will do it for you automatically, based on various aspects of your Serializable class, as described in the Java(TM) Object Serialization Specification.    
 
 
+The Serialization runtime associates a version number with each Serializable class called a SerialVersionUID, which is used during Deserialization to verify that sender and reciever of a serialized object have loaded classes for that object which are compatible with respect to serialization.  
 
-
+If the reciever has loaded a class for the object that has different UID than that of corresponding sender’s class, the Deserialization will result in an InvalidClassException. A Serializable class can declare its own UID explicitly by declaring a field name.
+It must be static, final and of type long.
 
 
 ## Reference:
-1. [serialization in java - geeksforgeeks](http://www.geeksforgeeks.org/serialization-in-java/)
+1. [serialization in java - geeksforgeeks](http://www.geeksforgeeks.org/serialization-in-java/)  
+
